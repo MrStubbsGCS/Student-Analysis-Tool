@@ -55,9 +55,55 @@ function analyze(){
   }
   
   var studentSheet = ss.insertSheet("test");
-  studentSheet.getRange(1,1, studentData[0].length, studentData[0][0].length).setValues(studentData[0]);
-  studentSheet.getRange(1,4, studentData[1].length, studentData[1][0].length).setValues(studentData[1]);
-  studentSheet.getRange(1,7, studentData[2].length, studentData[2][0].length).setValues(studentData[2]);
-  studentSheet.getRange(1,10, studentData[3].length, studentData[3][0].length).setValues(studentData[3]);
+  var k = studentSheet.getRange(1,1, studentData[0].length, studentData[0][0].length);
+  k.setValues(studentData[0]);
+  var i = studentSheet.getRange(1,4, studentData[1].length, studentData[1][0].length);
+  i.setValues(studentData[1]);
+  var c = studentSheet.getRange(1,7, studentData[2].length, studentData[2][0].length);
+  c.setValues(studentData[2]);
+  var a = studentSheet.getRange(1,10, studentData[3].length, studentData[3][0].length);
+  a.setValues(studentData[3]);
+  
+ var kchart = sheet.newChart()
+  .setChartType(Charts.ChartType.LINE)
+  .addRange(k)
+  .setPosition(10, 1, 0, 0)
+  .setOption('title', "Knowledge")
+  .setOption('legend', {textStyle: {fontSize: 14, bold: true}})
+  .setOption('titleTextStyle', {color: 'black', bold: true})
+  .build();
+  
+   var ichart = sheet.newChart()
+  .setChartType(Charts.ChartType.LINE)
+  .addRange(i)
+  .setPosition(10, 10, 0, 0)
+  .setOption('title', "Inquiry")
+  .setOption('legend', {textStyle: {fontSize: 14, bold: true}})
+  .setOption('titleTextStyle', {color: 'black', bold: true})
+  .build();
+  
+   var cchart = sheet.newChart()
+  .setChartType(Charts.ChartType.LINE)
+  .addRange(c)
+  .setPosition(28, 1, 0, 0)
+  .setOption('title', "Communication")
+  .setOption('legend', {textStyle: {fontSize: 14, bold: true}})
+  .setOption('titleTextStyle', {color: 'black', bold: true})
+  .build();
+  
+   var achart = sheet.newChart()
+  .setChartType(Charts.ChartType.LINE)
+  .addRange(a)
+  .setPosition(28, 10, 0, 0)
+  .setOption('title', "Application")
+  .setOption('legend', {textStyle: {fontSize: 14, bold: true}})
+  .setOption('titleTextStyle', {color: 'black', bold: true})
+  .build()
+  
+  
+  studentSheet.insertChart(kchart);
+  studentSheet.insertChart(ichart);
+  studentSheet.insertChart(cchart);
+  studentSheet.insertChart(achart);
   
 }
